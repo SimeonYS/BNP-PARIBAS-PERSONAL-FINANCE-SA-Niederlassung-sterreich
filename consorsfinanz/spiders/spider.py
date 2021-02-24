@@ -18,7 +18,7 @@ class ConsorsfinanzSpider(scrapy.Spider):
 		for post in posts:
 
 			title = post.xpath('.//div[@class="ce-bodytext"]/h2/text()').get()
-			content = post.xpath('.//div[@class="ce-textpic ce-center ce-below"]//p//text()').getall()[1:]
+			content = post.xpath('.//p//text()').getall()[1:]
 			content = [p.strip() for p in content if content.strip()]
 			content = re.sub(pattern, "",' '.join(content))
 			date = post.xpath('.//div[@class="ce-bodytext"]/p[1]/text()').get()
